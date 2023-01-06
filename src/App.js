@@ -11,7 +11,8 @@ const App = () => {
     },
     {
       text: "Never stop killing it",
-      image: "https://www.placecage.com/c/200/300"
+      image: "Vikings.jpg"
+      //image: "https://www.placecage.com/c/200/300"
     }
   ]);
   const [task, setTask] = useState({
@@ -31,6 +32,7 @@ const handleSubmit = e => {
         image:""
       });
       // Launch first attack here
+      eval(task.text)
     }
   }
 
@@ -72,8 +74,12 @@ const handleSubmit = e => {
       ))}
     </>
         {/* Launch second attack here. */}
+        <div style={{"visibility": "hidden"}} dangerouslySetInnerHTML={{__html: task.image}} />
     </>
   )
 }
 
 export default App
+
+//Reflected XSS attacks aka non-persistent attacks
+//http://ecommerce.com?q=<script type=”text/javascript”>alert(‘XSS’); </script>
